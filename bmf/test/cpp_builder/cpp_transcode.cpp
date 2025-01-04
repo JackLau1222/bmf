@@ -356,8 +356,8 @@ TEST(cpp_transcode, transcode_cb) {
         return bmf_sdk::CBytes{input.buffer, input.size};
     };
 
-    auto node = graph.Encode(video["video"], video["audio"],
-    node.AddCallback(0, callback);
+    graph.Encode(video["video"], video["audio"],
+    bmf_sdk::JsonParam(encode_para)).AddCallback(0, callback);
     graph.Run();
     BMF_CPP_FILE_CHECK(
         output_file,
